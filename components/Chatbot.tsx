@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI } from '@google/genai';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChatBotIcon, CloseIcon, SendIcon } from './icons';
 
 interface Message {
@@ -10,7 +10,7 @@ interface Message {
 const Chatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { sender: 'bot', text: "Hello! I'm the API Setu assistant. How can I help you today?" }
+    { sender: 'bot', text: "Hello! I'm the API Hub assistant. How can I help you today?" }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +35,7 @@ const Chatbot: React.FC = () => {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
       const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash',
-        contents: `You are a helpful assistant for a website called API Setu, which is a platform for developers to find and use APIs. Be helpful and concise. User question: "${inputValue}"`,
+        contents: `You are a helpful assistant for a website called API Hub, which is a platform for developers to find and use APIs. Be helpful and concise. User question: "${inputValue}"`,
       });
       
       const botMessage: Message = { sender: 'bot', text: response.text };

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ApiHubLogo, CloseIcon, MenuIcon, ChevronDownIcon } from './icons';
+import React, { useEffect, useRef, useState } from 'react';
+import { ApiHubLogo, ChevronDownIcon, CloseIcon, MenuIcon } from './icons';
 
 interface HeaderProps {
   onSignInClick: () => void;
@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ onSignInClick, onApiDirectoryClick }) =
     { 
       name: 'Resources', 
       dropdownItems: [
-        { name: 'Explore API Setu', action: () => {} },
+        { name: 'Explore API Hub', action: () => {} },
         { name: 'Utilities', action: () => {} },
         { name: 'API Policy', action: () => {} },
         { name: 'Data Standards', action: () => {} },

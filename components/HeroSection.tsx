@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const HeroSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
     },
     {
       title: "Get Access to Thousands of APIs",
-      subtitle: "Explore a world of APIs for developing innovative solutions. API Setu provides consent based access for a variety of use cases such as KYC, Paperless Admission processes and employment."
+      subtitle: "Explore a world of APIs for developing innovative solutions. API Hub provides consent based access for a variety of use cases such as KYC, Paperless Admission processes and employment."
     }
   ];
 

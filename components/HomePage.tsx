@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Footer from './Footer';
 import Header from './Header';
 import HeroSection from './HeroSection';
 import HowItWorksSection from './HowItWorksSection';
-import Footer from './Footer';
-import { 
-  BarChartIcon, UsersIcon, NetworkIcon, CertificateIcon, RegistrationIcon, 
-  DrivingLicenseIcon, MarksheetIcon, RationCardIcon, ArrowDownIcon,
-  DigiLockerLogo, MeriPehchaanLogo, UmangLogo, MySchemeLogo, 
-  CbseLogo, GstnLogo, McLogo
+import {
+  ArrowDownIcon,
+  BarChartIcon,
+  CbseLogo,
+  CertificateIcon,
+  DigiLockerLogo,
+  DrivingLicenseIcon,
+  GstnLogo,
+  MarksheetIcon,
+  McLogo,
+  MeriPehchaanLogo,
+  MySchemeLogo,
+  NetworkIcon,
+  RationCardIcon,
+  RegistrationIcon,
+  UmangLogo,
+  UsersIcon
 } from './icons';
 
 interface HomePageProps {
@@ -103,7 +115,7 @@ const TopApisSection: React.FC = () => {
     <section className="py-16 sm:py-24 bg-white/70 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Explore hundreds of APIs</h2>
-        <p className="mt-4 text-lg text-slate-600">API Setu offers a diverse range of APIs from reputable organizations.</p>
+        <p className="mt-4 text-lg text-slate-600">API Hub offers a diverse range of APIs from reputable organizations.</p>
         <ArrowDownIcon className="mx-auto mt-4 h-8 w-8 text-blue-600 animate-bounce" />
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-6">
           {apis.map(api => (
@@ -137,7 +149,7 @@ const TrustedBy: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 text-center">Trusted by India Stack platforms</h2>
         <p className="mt-4 text-lg text-slate-600 text-center max-w-3xl mx-auto">
-          Equip your application with all the tools for API management. API Setu is already a trusted partner for large Digital India platforms.
+          Equip your application with all the tools for API management. API Hub is already a trusted partner for large Digital India platforms.
         </p>
         <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)] mt-12">
           <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_svg]:max-w-none animate-infinite-scroll">
@@ -156,7 +168,7 @@ const CallToAction: React.FC = () => (
         <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-16 -translate-y-16" aria-hidden="true"></div>
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/10 rounded-full translate-x-20 translate-y-20" aria-hidden="true"></div>
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-            <h2 className="text-4xl font-bold">Reach new heights with API Setu</h2>
+            <h2 className="text-4xl font-bold">Reach new heights with API Hub</h2>
             <button className="mt-8 bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-slate-100 transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                 Get Started
             </button>

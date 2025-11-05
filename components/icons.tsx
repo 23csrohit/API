@@ -65,7 +65,7 @@ export const SearchIcon: React.FC<{ className?: string }> = ({ className }) => (
 export const ApiHubLogo: React.FC<{ className?: string, isFooter?: boolean }> = ({ className, isFooter = false }) => (
     <div className={`flex items-center font-bold text-2xl ${className}`}>
         <span className={isFooter ? 'text-white' : 'text-slate-900'}>API</span>
-        <span className="text-blue-600">Setu</span>
+        <span className="text-blue-600">Hub</span>
     </div>
 );
 
@@ -170,7 +170,7 @@ export const MenuIcon: React.FC<{ className?: string }> = ({ className }) => (
     </svg>
 );
 
-// New Icons for apisetu.gov.in redesign
+// New Icons for API Hub redesign
 export const CertificateIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><path d="m9 13 2 2 4-4"/></svg>
 );

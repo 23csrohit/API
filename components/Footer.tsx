@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
       <div className="bg-black/20 py-6">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400 text-sm">
           <p>Website designed & developed by National e-Governance Division (NeGD)</p>
-          <p>&copy; {new Date().getFullYear()} API Setu. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} API Hub. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
