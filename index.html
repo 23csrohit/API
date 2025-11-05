@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Hub - National Open API Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              'slate': {
+                '900': '#0f172a',
+                '800': '#1e293b',
+                '700': '#334155',
+                '600': '#475569',
+                '500': '#64748b',
+                '400': '#94a3b8',
+                '300': '#cbd5e1',
+                '200': '#e2e8f0',
+                '100': '#f1f5f9',
+                '50': '#f8fafc',
+              },
+              'blue': {
+                '600': '#2563eb',
+                '700': '#1d4ed8'
+              },
+              'sky': {
+                '500': '#0ea5e9',
+              },
+              'violet': {
+                '600': '#7c3aed',
+              },
+               'api-blue': { // Kept for legacy components if any
+                'DEFAULT': '#0f4c81',
+                '800': '#0d3f6b',
+                '900': '#0a3255'
+              },
+              'api-orange': { // Kept for legacy components if any
+                'DEFAULT': '#f7941d',
+                '500': '#f7941d',
+                '600': '#e0851a'
+              },
+            },
+            animation: {
+              'infinite-scroll': 'infinite-scroll 30s linear infinite',
+              'fade-in': 'fade-in 0.5s ease-out forwards',
+            },
+            keyframes: {
+              'infinite-scroll': {
+                from: { transform: 'translateX(0)' },
+                to: { transform: 'translateX(-100%)' },
+              },
+              'fade-in': {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-slate-50 text-slate-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
