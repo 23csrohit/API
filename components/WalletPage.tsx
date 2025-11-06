@@ -93,14 +93,14 @@ const WalletPage: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-api-blue">Wallet & Billing</h1>
-                    <p className="text-gray-600 mt-1">Manage your wallet balance and payment history</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-api-blue">Wallet & Billing</h1>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage your wallet balance and payment history</p>
                 </div>
                 <button
                     onClick={exportToCSV}
-                    className="flex items-center space-x-2 bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 transition-colors"
+                    className="flex items-center justify-center space-x-2 bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 transition-colors text-sm w-full sm:w-auto"
                 >
                     <DownloadIcon className="h-5 w-5" />
                     <span>Export History</span>
@@ -191,8 +191,8 @@ const WalletPage: React.FC = () => {
                     </div>
 
                     {/* Filters */}
-                    <div className="mb-4 flex flex-wrap gap-4">
-                        <div className="flex-1 min-w-[200px]">
+                    <div className="mb-4 flex flex-col sm:flex-row gap-4">
+                        <div className="flex-1 w-full">
                             <div className="relative">
                                 <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                                 <input
@@ -203,7 +203,7 @@ const WalletPage: React.FC = () => {
                                         setSearchTerm(e.target.value);
                                         setCurrentPage(1);
                                     }}
-                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue"
+                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue text-sm sm:text-base"
                                 />
                             </div>
                         </div>
@@ -213,7 +213,7 @@ const WalletPage: React.FC = () => {
                                 setStatusFilter(e.target.value as 'All' | 'Completed' | 'Pending' | 'Failed');
                                 setCurrentPage(1);
                             }}
-                            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue"
+                            className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue text-sm sm:text-base min-w-[140px]"
                         >
                             <option value="All">All Status</option>
                             <option value="Completed">Completed</option>
@@ -223,32 +223,32 @@ const WalletPage: React.FC = () => {
                     </div>
 
                     <div className="overflow-x-auto">
-                        <table className="w-full text-sm text-left text-gray-500">
+                        <table className="w-full text-xs sm:text-sm text-left text-gray-500">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-100">
                                 <tr>
-                                    <th scope="col" className="px-6 py-3">Date</th>
-                                    <th scope="col" className="px-6 py-3 text-right">Amount</th>
-                                    <th scope="col" className="px-6 py-3 text-center">Status</th>
-                                    <th scope="col" className="px-6 py-3">Transaction ID</th>
+                                    <th scope="col" className="px-3 sm:px-6 py-3">Date</th>
+                                    <th scope="col" className="px-3 sm:px-6 py-3 text-right">Amount</th>
+                                    <th scope="col" className="px-3 sm:px-6 py-3 text-center">Status</th>
+                                    <th scope="col" className="px-3 sm:px-6 py-3 hidden md:table-cell">Transaction ID</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {paginatedPayments.length > 0 ? (
                                     paginatedPayments.map((payment) => (
                                         <tr key={payment.id} className="bg-white border-b hover:bg-gray-50">
-                                            <td className="px-6 py-4 whitespace-nowrap">{new Date(payment.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
-                                            <td className="px-6 py-4 text-right font-medium text-gray-800">${payment.amount.toFixed(2)}</td>
-                                            <td className="px-6 py-4 text-center">
+                                            <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm">{new Date(payment.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
+                                            <td className="px-3 sm:px-6 py-3 sm:py-4 text-right font-medium text-gray-800 text-xs sm:text-sm">${payment.amount.toFixed(2)}</td>
+                                            <td className="px-3 sm:px-6 py-3 sm:py-4 text-center">
                                                 <span className={`px-2 py-1 font-semibold text-xs rounded-full ${getStatusBadge(payment.status)}`}>
                                                     {payment.status}
                                                 </span>
                                             </td>
-                                            <td className="px-6 py-4 font-mono text-xs">{payment.transactionId}</td>
+                                            <td className="px-3 sm:px-6 py-3 sm:py-4 font-mono text-xs hidden md:table-cell">{payment.transactionId}</td>
                                         </tr>
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
+                                        <td colSpan={4} className="px-4 sm:px-6 py-8 text-center text-gray-500 text-sm">
                                             No payments found
                                         </td>
                                     </tr>
@@ -259,25 +259,25 @@ const WalletPage: React.FC = () => {
 
                     {/* Pagination */}
                     {totalPages > 1 && (
-                        <div className="mt-4 flex items-center justify-between">
-                            <div className="text-sm text-gray-600">
+                        <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div className="text-xs sm:text-sm text-gray-600 text-center sm:text-left">
                                 Showing {((currentPage - 1) * itemsPerPage) + 1} to {Math.min(currentPage * itemsPerPage, filteredPayments.length)} of {filteredPayments.length} results
                             </div>
-                            <div className="flex space-x-2">
+                            <div className="flex items-center space-x-2">
                                 <button
                                     onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                                     disabled={currentPage === 1}
-                                    className="px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                                    className="px-3 sm:px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-sm"
                                 >
                                     Previous
                                 </button>
-                                <span className="px-4 py-2 text-sm text-gray-600">
+                                <span className="px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-600">
                                     Page {currentPage} of {totalPages}
                                 </span>
                                 <button
                                     onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                                     disabled={currentPage === totalPages}
-                                    className="px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                                    className="px-3 sm:px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-sm"
                                 >
                                     Next
                                 </button>

@@ -34,10 +34,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ navigateToHome, navigateToRegiste
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="p-8 bg-white rounded-lg shadow-xl w-full max-w-md text-center">
-        <h1 className="text-3xl font-bold text-api-blue mb-4">Sign In</h1>
-        <p className="text-gray-600 mb-6">Welcome back! Please enter your details.</p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+      <div className="p-6 sm:p-8 bg-white rounded-lg shadow-xl w-full max-w-md text-center">
+        <h1 className="text-2xl sm:text-3xl font-bold text-api-blue mb-4">Sign In</h1>
+        <p className="text-gray-600 mb-6 text-sm sm:text-base">Welcome back! Please enter your details.</p>
         
         <form className="space-y-4" onSubmit={handleSubmit}>
           {error && (

@@ -1,0 +1,96 @@
+/* Responsive, pixel-consistent styles for RegisterPage */
+:root{
+  --accent:#2563eb; /* API blue */
+  --muted:#6b7280;
+  --bg:#f3f4f6;
+}
+
+.register-root{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  background:var(--bg);
+  padding:4vw 4vw;
+}
+
+.register-card{
+  width:min(92%,420px);
+  padding:clamp(18px, 3.5vw, 32px);
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(15,23,42,0.08);
+  text-align:left;
+  box-sizing:border-box;
+}
+
+.register-title{
+  font-weight:700;
+  font-size:clamp(20px, 3vw, 28px);
+  line-height:1.12;
+  color:var(--accent);
+  margin:0 0 8px 0;
+}
+
+.register-subtitle{
+  color:var(--muted);
+  margin:0 0 18px 0;
+  font-size:clamp(13px, 1.6vw, 14px);
+}
+
+.digilocker-section{
+  padding:12px;
+  border-radius:8px;
+  background:linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+  border:1px solid rgba(37,99,235,0.06);
+}
+
+.digilocker-section h2{ margin:0 0 8px 0; font-size:13px; color:var(--accent); font-weight:600; }
+
+.digilocker-btn{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:12px;
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1.5px solid var(--accent);
+  background:#fff;
+  color:var(--accent);
+  font-weight:600;
+  font-size:clamp(14px,1.8vw,16px);
+  cursor:pointer;
+  transition:box-shadow .18s ease, transform .12s ease;
+}
+
+.digilocker-btn img{ width:36px; height:auto; flex:0 0 auto; }
+.digilocker-btn:hover{ box-shadow:0 6px 18px rgba(37,99,235,0.12); transform:translateY(-1px); }
+
+.separator{ position:relative; margin:20px 0; }
+.separator hr{ border:none; height:1px; background:#e5e7eb; }
+.separator span{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; padding:6px 10px; font-size:13px; color:#6b7280; }
+
+.form-input{ width:100%; padding:10px 12px; border-radius:8px; border:1px solid #d1d5db; font-size:14px; box-sizing:border-box; }
+.form-input:focus{ outline:none; border-color:var(--accent); box-shadow:0 0 0 4px rgba(37,99,235,0.06); }
+.form-input.border-red-500{ border-color:#ef4444; }
+
+.error-text{ color:#dc2626; font-size:12px; margin-top:6px; text-align:left; }
+
+.terms-row{ display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; }
+.terms-row input{ margin-top:3px; }
+
+.primary-btn{ width:100%; padding:11px 14px; background:var(--accent); color:#fff; border-radius:8px; font-weight:700; font-size:15px; border:none; cursor:pointer; }
+.primary-btn:hover{ background:#1e40af; box-shadow:0 8px 24px rgba(30,64,175,0.18); }
+
+.back-home{ margin-top:18px; color:var(--accent); font-size:14px; display:inline-flex; align-items:center; gap:8px; }
+
+@media (max-width:480px){
+  .register-card{ width:min(96%,360px); padding:18px; }
+  .digilocker-btn img{ width:30px; }
+  .register-title{ font-size:20px; }
+}
+
+@media (min-width:900px){
+  .register-card{ width:420px; }
+}

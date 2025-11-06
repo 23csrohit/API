@@ -222,14 +222,14 @@ const VehicleDetails: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-api-blue">Vehicle Details</h1>
-                    <p className="text-gray-600 mt-1">Search and track vehicle information using registration number</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-api-blue">Vehicle Details</h1>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Search and track vehicle information using registration number</p>
                 </div>
                 <button
                     onClick={exportToCSV}
-                    className="flex items-center space-x-2 bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 transition-colors"
+                    className="flex items-center justify-center space-x-2 bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 transition-colors text-sm w-full sm:w-auto"
                 >
                     <DownloadIcon className="h-5 w-5" />
                     <span>Export CSV</span>
@@ -237,28 +237,28 @@ const VehicleDetails: React.FC = () => {
             </div>
 
             {/* Search Form */}
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                <form onSubmit={handleSearch} className="flex items-center w-full bg-white rounded-lg border border-gray-300 overflow-hidden">
-                <input
-                    type="search"
-                    value={regNo}
-                    onChange={(e) => setRegNo(e.target.value.toUpperCase())}
-                        placeholder="Enter Vehicle Registration Number (e.g., DL01AB1234)..."
-                        className="flex-1 py-3 pl-6 pr-4 text-gray-700 placeholder-gray-500 focus:outline-none"
-                    disabled={isLoading}
-                />
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md border border-gray-200">
+                <form onSubmit={handleSearch} className="flex flex-col sm:flex-row items-stretch sm:items-center w-full bg-white rounded-lg border border-gray-300 overflow-hidden gap-2 sm:gap-0">
+                    <input
+                        type="search"
+                        value={regNo}
+                        onChange={(e) => setRegNo(e.target.value.toUpperCase())}
+                        placeholder="Enter Vehicle Registration Number..."
+                        className="flex-1 py-3 pl-4 sm:pl-6 pr-4 text-gray-700 placeholder-gray-500 focus:outline-none text-sm sm:text-base"
+                        disabled={isLoading}
+                    />
                 <button
                     type="submit"
-                        className="flex items-center justify-center bg-api-orange hover:bg-api-orange-600 text-white font-bold py-3 px-8 transition-colors duration-300 disabled:bg-gray-400"
+                    className="flex items-center justify-center bg-api-orange hover:bg-api-orange-600 text-white font-bold py-3 px-4 sm:px-8 transition-colors duration-300 disabled:bg-gray-400 text-sm sm:text-base w-full sm:w-auto"
                     disabled={isLoading}
                 >
                     {isLoading ? (
-                         <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                     ) : (
-                            <>
-                                <SearchIcon className="h-5 w-5 mr-2" />
-                                Search
-                            </>
+                        <>
+                            <SearchIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+                            <span>Search</span>
+                        </>
                     )}
                 </button>
             </form>
@@ -300,59 +300,59 @@ const VehicleDetails: React.FC = () => {
             {/* Vehicle Records Table */}
             <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
                 <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left text-gray-500">
+                    <table className="w-full text-xs sm:text-sm text-left text-gray-500">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-100">
                             <tr>
-                                <th scope="col" className="px-6 py-3">Registration No</th>
-                                <th scope="col" className="px-6 py-3">Owner Name</th>
-                                <th scope="col" className="px-6 py-3">Location</th>
-                                <th scope="col" className="px-6 py-3">Vehicle Class</th>
-                                <th scope="col" className="px-6 py-3">Fuel Type</th>
-                                <th scope="col" className="px-6 py-3">Maker / Model</th>
-                                <th scope="col" className="px-6 py-3">Registered Date</th>
-                                <th scope="col" className="px-6 py-3">Insurance Upto</th>
-                                <th scope="col" className="px-6 py-3">Search Date</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3">Registration No</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3">Owner Name</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 hidden md:table-cell">Location</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 hidden lg:table-cell">Vehicle Class</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3">Fuel Type</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 hidden lg:table-cell">Maker / Model</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 hidden md:table-cell">Registered Date</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 hidden lg:table-cell">Insurance Upto</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 hidden xl:table-cell">Search Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             {paginatedRecords.length > 0 ? (
                                 paginatedRecords.map((record) => (
                                     <tr key={record.id} className="bg-white border-b hover:bg-gray-50">
-                                        <td className="px-6 py-4 font-medium text-gray-900 font-mono whitespace-nowrap">
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 font-medium text-gray-900 font-mono text-xs sm:text-sm whitespace-nowrap">
                                             {record.registrationNo}
                                         </td>
-                                        <td className="px-6 py-4">{record.ownerName}</td>
-                                        <td className="px-6 py-4">
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm">{record.ownerName}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 hidden md:table-cell">
                                             {record.location ? (
                                                 <div className="flex items-center space-x-2">
-                                                    <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg className="h-4 w-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     </svg>
-                 <div>
-                                                        <div className="text-sm font-medium text-gray-900">{record.location.city}</div>
+                                                    <div>
+                                                        <div className="text-xs sm:text-sm font-medium text-gray-900">{record.location.city}</div>
                                                         <div className="text-xs text-gray-500">{record.location.state}</div>
                                                     </div>
                                                 </div>
                                             ) : (
-                                                <span className="text-gray-400 text-sm">N/A</span>
+                                                <span className="text-gray-400 text-xs sm:text-sm">N/A</span>
                                             )}
                                         </td>
-                                        <td className="px-6 py-4">{record.vehicleClass}</td>
-                                        <td className="px-6 py-4">
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 hidden lg:table-cell text-xs sm:text-sm">{record.vehicleClass}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4">
                                             <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getFuelTypeBadge(record.fuelType)}`}>
                                                 {record.fuelType}
                                             </span>
                                         </td>
-                                        <td className="px-6 py-4">{record.makerModel}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap">{record.registeredDate}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap">{record.insuranceUpto}</td>
-                                        <td className="px-6 py-4 font-mono text-xs text-gray-500 whitespace-nowrap">{record.searchDate}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 hidden lg:table-cell text-xs sm:text-sm">{record.makerModel}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 hidden md:table-cell whitespace-nowrap text-xs sm:text-sm">{record.registeredDate}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 hidden lg:table-cell whitespace-nowrap text-xs sm:text-sm">{record.insuranceUpto}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 hidden xl:table-cell font-mono text-xs text-gray-500 whitespace-nowrap">{record.searchDate}</td>
                                     </tr>
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan={9} className="px-6 py-8 text-center text-gray-500">
+                                    <td colSpan={9} className="px-4 sm:px-6 py-8 text-center text-gray-500 text-sm">
                                         No vehicle records found. Use the search form above to add a vehicle.
                                     </td>
                                 </tr>
@@ -363,31 +363,31 @@ const VehicleDetails: React.FC = () => {
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                    <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-                        <div className="text-sm text-gray-600">
+                    <div className="px-4 sm:px-6 py-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div className="text-xs sm:text-sm text-gray-600 text-center sm:text-left">
                             Showing {((currentPage - 1) * itemsPerPage) + 1} to {Math.min(currentPage * itemsPerPage, filteredRecords.length)} of {filteredRecords.length} results
                         </div>
-                        <div className="flex space-x-2">
+                        <div className="flex items-center space-x-2">
                             <button
                                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                                 disabled={currentPage === 1}
-                                className="px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                                className="px-3 sm:px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-sm"
                             >
                                 Previous
                             </button>
-                            <span className="px-4 py-2 text-sm text-gray-600">
+                            <span className="px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-600">
                                 Page {currentPage} of {totalPages}
                             </span>
                             <button
                                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                                 disabled={currentPage === totalPages}
-                                className="px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                                className="px-3 sm:px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-sm"
                             >
                                 Next
                             </button>
                         </div>
-                </div>
-            )}
+                    </div>
+                )}
             </div>
         </div>
     );

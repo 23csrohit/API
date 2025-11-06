@@ -91,14 +91,14 @@ const ApiLogs: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-api-blue">API Hit Logs</h1>
-                    <p className="text-gray-600 mt-1">Monitor and track all your API requests in real-time</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-api-blue">API Hit Logs</h1>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Monitor and track all your API requests in real-time</p>
                 </div>
                 <button
                     onClick={exportToCSV}
-                    className="flex items-center space-x-2 bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 transition-colors"
+                    className="flex items-center justify-center space-x-2 bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 transition-colors text-sm w-full sm:w-auto"
                 >
                     <DownloadIcon className="h-5 w-5" />
                     <span>Export CSV</span>
@@ -127,8 +127,8 @@ const ApiLogs: React.FC = () => {
 
             {/* Filters */}
             <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-                <div className="flex flex-wrap gap-4 items-center">
-                    <div className="flex-1 min-w-[200px]">
+                <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex-1 w-full">
                         <div className="relative">
                             <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                             <input
@@ -136,19 +136,19 @@ const ApiLogs: React.FC = () => {
                                 placeholder="Search by API name, endpoint, or timestamp..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue"
+                                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue text-sm sm:text-base"
                             />
                         </div>
                     </div>
-                    <div className="flex items-center space-x-2">
-                        <FilterIcon className="h-5 w-5 text-gray-400" />
+                    <div className="flex items-center gap-2 flex-wrap">
+                        <FilterIcon className="h-5 w-5 text-gray-400 hidden sm:block" />
                         <select
                             value={statusFilter}
                             onChange={(e) => {
                                 setStatusFilter(e.target.value as 'All' | 'Success' | 'Failed');
                                 setCurrentPage(1);
                             }}
-                            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue"
+                            className="flex-1 sm:flex-none px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue text-sm sm:text-base min-w-[120px]"
                         >
                             <option value="All">All Status</option>
                             <option value="Success">Success</option>
@@ -160,7 +160,7 @@ const ApiLogs: React.FC = () => {
                                 setApiFilter(e.target.value);
                                 setCurrentPage(1);
                             }}
-                            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue"
+                            className="flex-1 sm:flex-none px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-api-blue text-sm sm:text-base min-w-[120px]"
                         >
                             <option value="All">All APIs</option>
                             {uniqueApis.map(api => (
@@ -174,36 +174,36 @@ const ApiLogs: React.FC = () => {
             {/* Logs Table */}
             <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
                 <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left text-gray-500">
+                    <table className="w-full text-xs sm:text-sm text-left text-gray-500">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-100">
                             <tr>
-                                <th scope="col" className="px-6 py-3">Timestamp</th>
-                                <th scope="col" className="px-6 py-3">API Name</th>
-                                <th scope="col" className="px-6 py-3">Endpoint</th>
-                                <th scope="col" className="px-6 py-3 text-center">Status</th>
-                                <th scope="col" className="px-6 py-3 text-center">Code</th>
-                                <th scope="col" className="px-6 py-3 text-right">Latency</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3">Timestamp</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3">API Name</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 hidden md:table-cell">Endpoint</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 text-center">Status</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 text-center">Code</th>
+                                <th scope="col" className="px-3 sm:px-6 py-3 text-right">Latency</th>
                             </tr>
                         </thead>
                         <tbody>
                             {paginatedLogs.length > 0 ? (
                                 paginatedLogs.map((log) => (
                                     <tr key={log.id} className="bg-white border-b hover:bg-gray-50">
-                                        <td className="px-6 py-4 font-mono text-gray-700 whitespace-nowrap">{log.timestamp}</td>
-                                        <td className="px-6 py-4 font-medium text-gray-900">{log.apiName}</td>
-                                        <td className="px-6 py-4 font-mono text-xs">{log.endpoint}</td>
-                                        <td className="px-6 py-4 text-center">
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 font-mono text-gray-700 text-xs sm:text-sm whitespace-nowrap">{log.timestamp}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 font-medium text-gray-900 text-xs sm:text-sm">{log.apiName}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 font-mono text-xs hidden md:table-cell">{log.endpoint}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 text-center">
                                             <span className={`px-2 py-1 font-semibold text-xs rounded-full ${getStatusBadge(log.status)}`}>
                                                 {log.status}
                                             </span>
                                         </td>
-                                        <td className="px-6 py-4 text-center">{log.statusCode}</td>
-                                        <td className="px-6 py-4 text-right">{log.latency}ms</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 text-center text-xs sm:text-sm">{log.statusCode}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 text-right text-xs sm:text-sm">{log.latency}ms</td>
                                     </tr>
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                                    <td colSpan={6} className="px-4 sm:px-6 py-8 text-center text-gray-500 text-sm">
                                         No logs found matching your filters
                                     </td>
                                 </tr>
@@ -214,25 +214,25 @@ const ApiLogs: React.FC = () => {
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                    <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-                        <div className="text-sm text-gray-600">
+                    <div className="px-4 sm:px-6 py-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div className="text-xs sm:text-sm text-gray-600 text-center sm:text-left">
                             Showing {((currentPage - 1) * itemsPerPage) + 1} to {Math.min(currentPage * itemsPerPage, filteredLogs.length)} of {filteredLogs.length} results
                         </div>
-                        <div className="flex space-x-2">
+                        <div className="flex items-center space-x-2">
                             <button
                                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                                 disabled={currentPage === 1}
-                                className="px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                                className="px-3 sm:px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-sm"
                             >
                                 Previous
                             </button>
-                            <span className="px-4 py-2 text-sm text-gray-600">
+                            <span className="px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-600">
                                 Page {currentPage} of {totalPages}
                             </span>
                             <button
                                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                                 disabled={currentPage === totalPages}
-                                className="px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                                className="px-3 sm:px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-sm"
                             >
                                 Next
                             </button>

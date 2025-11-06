@@ -83,29 +83,29 @@ const ClientInfo: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-api-blue">Client Information</h1>
-                    <p className="text-gray-600 mt-1">Manage your account details and preferences</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-api-blue">Client Information</h1>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage your account details and preferences</p>
                 </div>
                 {!isEditing ? (
                     <button
                         onClick={handleEdit}
-                        className="bg-api-blue text-white font-semibold py-2 px-6 rounded-md hover:bg-api-blue-800 transition-colors"
+                        className="bg-api-blue text-white font-semibold py-2 px-4 sm:px-6 rounded-md hover:bg-api-blue-800 transition-colors text-sm sm:text-base w-full sm:w-auto"
                     >
                         Edit Profile
                     </button>
                 ) : (
-                    <div className="space-x-3">
+                    <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                         <button
                             onClick={handleCancel}
-                            className="bg-gray-200 text-gray-800 font-semibold py-2 px-6 rounded-md hover:bg-gray-300 transition-colors"
+                            className="bg-gray-200 text-gray-800 font-semibold py-2 px-4 sm:px-6 rounded-md hover:bg-gray-300 transition-colors text-sm sm:text-base w-full sm:w-auto"
                         >
                             Cancel
                         </button>
                         <button
                             onClick={handleSave}
-                            className="bg-green-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-green-700 transition-colors"
+                            className="bg-green-600 text-white font-semibold py-2 px-4 sm:px-6 rounded-md hover:bg-green-700 transition-colors text-sm sm:text-base w-full sm:w-auto"
                         >
                             Save Changes
                         </button>
@@ -116,14 +116,14 @@ const ClientInfo: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Profile Card */}
                 <div className="lg:col-span-1">
-                    <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center">
+                    <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md border border-gray-200 text-center">
                         <img 
                             src="https://i.pravatar.cc/120" 
                             alt="Profile" 
-                            className="h-32 w-32 rounded-full mx-auto mb-4 border-4 border-api-orange"
+                            className="h-24 w-24 sm:h-32 sm:w-32 rounded-full mx-auto mb-4 border-4 border-api-orange"
                         />
-                        <h2 className="text-2xl font-bold text-gray-900 mb-1">{clientInfo.name}</h2>
-                        <p className="text-gray-600 mb-3">{clientInfo.email}</p>
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">{clientInfo.name}</h2>
+                        <p className="text-gray-600 mb-3 text-sm sm:text-base break-words">{clientInfo.email}</p>
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${getAccountTypeBadge(clientInfo.accountType)}`}>
                             {clientInfo.accountType} Plan
                         </span>
@@ -149,8 +149,8 @@ const ClientInfo: React.FC = () => {
                 </div>
 
                 {/* Details Section */}
-                <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                    <h2 className="text-2xl font-semibold text-api-blue-800 mb-6 pb-2 border-b">Personal Information</h2>
+                <div className="lg:col-span-2 bg-white p-4 sm:p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 className="text-xl sm:text-2xl font-semibold text-api-blue-800 mb-6 pb-2 border-b">Personal Information</h2>
                     <dl className="space-y-0">
                         <InfoRow label="Full Name" value={isEditing ? editedInfo.name : clientInfo.name} field="name" editable />
                         <InfoRow label="Email Address" value={isEditing ? editedInfo.email : clientInfo.email} field="email" editable />
@@ -158,10 +158,10 @@ const ClientInfo: React.FC = () => {
                         <InfoRow label="Company Name" value={isEditing ? editedInfo.company : clientInfo.company} field="company" editable />
                     </dl>
 
-                    <h2 className="text-2xl font-semibold text-api-blue-800 mt-8 mb-6 pb-2 border-b">Address Information</h2>
+                    <h2 className="text-xl sm:text-2xl font-semibold text-api-blue-800 mt-6 sm:mt-8 mb-6 pb-2 border-b">Address Information</h2>
                     <dl className="space-y-0">
                         <InfoRow label="Address" value={isEditing ? editedInfo.address : clientInfo.address} field="address" editable />
-                        <div className="grid grid-cols-2 gap-4 py-4 border-b border-gray-200">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-b border-gray-200">
                             <div>
                                 <dt className="text-sm font-medium text-gray-500 mb-1">City</dt>
                                 <dd className="text-base text-gray-900">
@@ -193,7 +193,7 @@ const ClientInfo: React.FC = () => {
                                 </dd>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4 py-4 border-b border-gray-200">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-b border-gray-200">
                             <div>
                                 <dt className="text-sm font-medium text-gray-500 mb-1">Pincode</dt>
                                 <dd className="text-base text-gray-900">
@@ -227,7 +227,7 @@ const ClientInfo: React.FC = () => {
                         </div>
                     </dl>
 
-                    <h2 className="text-2xl font-semibold text-api-blue-800 mt-8 mb-6 pb-2 border-b">Business Information</h2>
+                    <h2 className="text-xl sm:text-2xl font-semibold text-api-blue-800 mt-6 sm:mt-8 mb-6 pb-2 border-b">Business Information</h2>
                     <dl className="space-y-0">
                         <InfoRow label="GSTIN" value={clientInfo.gstin || 'Not provided'} field="gstin" editable />
                         <InfoRow label="PAN" value={clientInfo.pan || 'Not provided'} field="pan" editable />

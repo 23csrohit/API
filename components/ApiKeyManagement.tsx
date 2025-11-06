@@ -28,14 +28,14 @@ const ApiKeyManagement: React.FC = () => {
 
   return (
     <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-200">
-      <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-6">
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
         <div>
-            <h1 className="text-3xl font-bold text-api-blue">API Key Management</h1>
-            <p className="text-gray-600 mt-1">Generate, revoke, and manage your access keys below.</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-api-blue">API Key Management</h1>
+            <p className="text-gray-600 mt-1 text-sm sm:text-base">Generate, revoke, and manage your access keys below.</p>
         </div>
         <button 
           onClick={handleGenerateKey}
-          className="bg-green-600 mt-4 sm:mt-0 text-white font-bold py-2 px-5 rounded-md hover:bg-green-700 transition-colors self-start sm:self-center"
+          className="bg-green-600 text-white font-bold py-2 px-4 sm:px-5 rounded-md hover:bg-green-700 transition-colors text-sm sm:text-base w-full sm:w-auto"
         >
           + Generate New API Key
         </button>
@@ -48,28 +48,28 @@ const ApiKeyManagement: React.FC = () => {
       )}
 
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-gray-700 mb-3 border-b pb-2">Your Keys</h3>
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-3 border-b pb-2">Your Keys</h3>
         {apiKeys.length > 0 ? (
           <ul className="space-y-3 max-h-96 overflow-y-auto pr-2">
             {apiKeys.map((key, index) => (
-              <li key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-md border shadow-sm">
-                <pre className="text-sm text-gray-600 font-mono overflow-x-auto mr-4">{key}</pre>
-                <div className="flex items-center flex-shrink-0 space-x-4">
+              <li key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-gray-50 p-3 sm:p-4 rounded-md border shadow-sm gap-3">
+                <pre className="text-xs sm:text-sm text-gray-600 font-mono overflow-x-auto flex-1 min-w-0 break-all">{key}</pre>
+                <div className="flex items-center flex-shrink-0 space-x-3 sm:space-x-4 w-full sm:w-auto">
                   <button
                     onClick={() => handleCopyKey(key)}
                     disabled={copiedKey === key}
-                    className="text-sm font-semibold text-api-blue hover:text-api-blue-800 disabled:text-green-600 disabled:cursor-not-allowed transition-colors"
+                    className="text-xs sm:text-sm font-semibold text-api-blue hover:text-api-blue-800 disabled:text-green-600 disabled:cursor-not-allowed transition-colors px-3 py-1.5 border border-api-blue rounded-md hover:bg-api-blue/10 disabled:border-green-600 flex-1 sm:flex-none"
                   >
                     {copiedKey === key ? 'Copied!' : 'Copy'}
                   </button>
-                  <button className="text-red-500 hover:text-red-700 text-sm font-semibold">Revoke</button>
+                  <button className="text-red-500 hover:text-red-700 text-xs sm:text-sm font-semibold px-3 py-1.5 border border-red-500 rounded-md hover:bg-red-50 flex-1 sm:flex-none">Revoke</button>
                 </div>
               </li>
             ))}
           </ul>
         ) : (
           <div className="text-center py-8 bg-gray-50 rounded-md border">
-            <p className="text-gray-500 italic">You have not generated any API keys yet.</p>
+            <p className="text-gray-500 italic text-sm sm:text-base">You have not generated any API keys yet.</p>
           </div>
         )}
       </div>

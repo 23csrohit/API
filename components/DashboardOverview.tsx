@@ -39,8 +39,8 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, note, icon: Icon, col
                     </span>
                 )}
             </div>
-            <p className="text-sm font-medium text-gray-600 mb-1">{title}</p>
-            <p className={`text-3xl font-bold ${textColors[color]} mb-1`}>{value}</p>
+            <p className="text-xs sm:text-sm font-medium text-gray-600 mb-1">{title}</p>
+            <p className={`text-2xl sm:text-3xl font-bold ${textColors[color]} mb-1`}>{value}</p>
             <p className="text-xs text-gray-500">{note}</p>
         </div>
     );
@@ -67,8 +67,8 @@ const ActivityItem: React.FC<{ icon: string; title: string; time: string; status
                 <p className="text-sm font-medium text-gray-900">{title}</p>
                 <p className="text-xs text-gray-500 mt-1">{time}</p>
             </div>
-        </div>
-    );
+    </div>
+);
 };
 
 interface DashboardOverviewProps {
@@ -85,21 +85,21 @@ const DashboardOverview: React.FC<DashboardOverviewProps> = ({ setCurrentView })
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900">Dashboard Overview</h1>
-                    <p className="text-gray-600 mt-1">Welcome back, Jane! Here's what's happening with your account.</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Dashboard Overview</h1>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Welcome back, Jane! Here's what's happening with your account.</p>
                 </div>
-                <div className="mt-4 sm:mt-0 flex space-x-3">
+                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                     <button
                         onClick={() => setCurrentView('vehicle')}
-                        className="bg-api-blue text-white font-semibold py-2 px-4 rounded-lg hover:bg-api-blue-800 transition-colors text-sm"
+                        className="bg-api-blue text-white font-semibold py-2 px-4 rounded-lg hover:bg-api-blue-800 transition-colors text-sm w-full sm:w-auto"
                     >
                         Search Vehicle
                     </button>
                     <button
                         onClick={() => setCurrentView('wallet')}
-                        className="bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 transition-colors text-sm"
+                        className="bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 transition-colors text-sm w-full sm:w-auto"
                     >
                         Recharge Wallet
                     </button>
@@ -159,12 +159,12 @@ const DashboardOverview: React.FC<DashboardOverviewProps> = ({ setCurrentView })
             {/* Main Content Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Recent Activity */}
-                <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
                     <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-semibold text-gray-900">Recent Activity</h2>
+                        <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Recent Activity</h2>
                         <button
                             onClick={() => setCurrentView('logs')}
-                            className="text-sm text-api-blue hover:underline font-medium"
+                            className="text-xs sm:text-sm text-api-blue hover:underline font-medium"
                         >
                             View All
                         </button>
@@ -204,8 +204,8 @@ const DashboardOverview: React.FC<DashboardOverviewProps> = ({ setCurrentView })
                 </div>
 
                 {/* Quick Actions */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                    <h2 className="text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+                    <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
                     <div className="space-y-3">
                         <button
                             onClick={() => setCurrentView('vehicle')}
@@ -270,39 +270,39 @@ const DashboardOverview: React.FC<DashboardOverviewProps> = ({ setCurrentView })
             {/* Recent Vehicles & Stats */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Recent Vehicle Searches */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
                     <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-semibold text-gray-900">Recent Vehicle Searches</h2>
+                        <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Recent Vehicle Searches</h2>
                         <button
                             onClick={() => setCurrentView('vehicle')}
-                            className="text-sm text-api-blue hover:underline font-medium"
+                            className="text-xs sm:text-sm text-api-blue hover:underline font-medium"
                         >
                             View All
                         </button>
                     </div>
                     <div className="space-y-4">
                         {recentVehicles.map((vehicle, index) => (
-                            <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-                                <div className="flex items-center space-x-4">
-                                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                        <svg className="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div key={index} className="flex items-center justify-between p-3 sm:p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                                <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                         </svg>
                                     </div>
-                                    <div>
-                                        <p className="font-semibold text-gray-900">{vehicle.regNo}</p>
-                                        <p className="text-sm text-gray-500">{vehicle.owner}</p>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="font-semibold text-gray-900 text-sm sm:text-base truncate">{vehicle.regNo}</p>
+                                        <p className="text-xs sm:text-sm text-gray-500 truncate">{vehicle.owner}</p>
                                     </div>
                                 </div>
-                                <span className="text-xs text-gray-500">{vehicle.searchedAt}</span>
+                                <span className="text-xs text-gray-500 ml-2 flex-shrink-0">{vehicle.searchedAt}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Usage Statistics */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                    <h2 className="text-xl font-semibold text-gray-900 mb-6">Usage Statistics</h2>
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+                    <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-6">Usage Statistics</h2>
                     <div className="space-y-6">
                         <div>
                             <div className="flex justify-between items-center mb-2">
